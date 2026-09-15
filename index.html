@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>INMOBILIA | Portal Inmobiliario</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+<script>
+tailwind.config = {
+    theme: {
+        extend: {
+            colors: {
+                navy: '#0F172A',
+                emerald: '#176B5B',
+                bronze: '#B08D57'
+            },
+            fontFamily: {
+                sans: ['Inter', 'sans-serif'],
+                serif: ['Playfair Display', 'serif']
+            }
+        }
+    }
+}
+</script>
+
+<style>
+html {
+    scroll-behavior:smooth;
+}
+
+body {
+    font-family:'Inter',sans-serif;
+    color:#0F172A;
+}
+
+.hero {
+    background:
+        linear-gradient(rgba(15,23,42,.48),rgba(15,23,42,.70)),
+        url('images/hero.jpg') center/cover no-repeat;
+    min-height:590px;
+}
+
+.gold-line {
+    width:48px;
+    height:3px;
+    background:#B08D57;
+}
+
+.property-card {
+    transition:.25s ease;
+}
+
+.property-card:hover {
+    transform:translateY(-3px);
+    box-shadow:0 18px 40px rgba(15,23,42,.12);
+}
+
+.property-card img {
+    transition:.4s ease;
+}
+
+.property-card:hover img {
+    transform:scale(1.035);
+}
+
+.search-field:focus {
+    outline:none;
+    border-color:#176B5B;
+}
+
+@media(max-width:900px) {
+    .desktop-nav {
+        display:none;
+    }
+}
+</style>
+</head>
+
+<body class="bg-white">
+
+
+<!-- =========================================================
+     TOP BAR
+========================================================= -->
+
+<div class="bg-navy text-slate-300 text-xs">
+    <div class="max-w-7xl mx-auto px-6 h-9 flex items-center justify-between">
+
+        <div class="flex gap-6">
+            <span>Atención al cliente: +34 900 123 456</span>
+            <span class="hidden md:inline">Lun–Vie 09:00–20:00</span>
+        </div>
+
+        <div class="flex gap-5">
+            <a href="#">ES</a>
+            <a href="#">EUR €</a>
+            <a href="#">Área privada</a>
+            <a href="#">Agentes</a>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="bg-white border-b border-slate-200">
+
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center">
+
+        <!-- LOGO -->
+
+        <a href="index.html" class="flex items-center gap-3 w-60">
+
+            <div class="w-11 h-11 bg-navy text-white flex items-center justify-center">
+                <span class="font-serif text-2xl">I</span>
+            </div>
+
+            <div>
+                <div class="font-semibold text-xl tracking-wide">
+                    INMOBILIA
+                </div>
+
+                <div class="text-[9px] tracking-[.25em] text-slate-500">
+                    REAL ESTATE GROUP
+                </div>
+            </div>
+
+        </a>
+
+
+        <!-- NAVEGACIÓN -->
+
+        <nav class="desktop-nav flex-1 flex justify-center gap-8 text-sm font-medium">
+
+            <a href="#propiedades" class="hover:text-emerald-700">
+                Comprar
+            </a>
+
+            <a href="#buscar" class="hover:text-emerald-700">
+                Alquilar
+            </a>
+
+            <a href="#propiedades" class="hover:text-emerald-700">
+                Obra Nueva
+            </a>
+
+            <a href="#vender" class="hover:text-emerald-700">
+                Vender
+            </a>
+
+            <a href="#servicios" class="hover:text-emerald-700">
+                Servicios
+            </a>
+
+            <a href="#agencias" class="hover:text-emerald-700">
+                Agencias
+            </a>
+
+        </nav>
+
+
+        <a href="#vender"
+           class="bg-emerald-700 text-white px-6 py-3 text-sm font-semibold hover:bg-emerald-800">
+            Publicar inmueble
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero flex items-center">
+
+    <div class="max-w-7xl mx-auto px-6 w-full">
+
+        <div class="max-w-3xl text-white mb-12">
+
+            <div class="gold-line mb-6"></div>
+
+            <h1 class="font-serif text-5xl md:text-6xl leading-tight">
+                Encuentra el lugar
+                <br>
+                donde empieza tu próxima historia.
+            </h1>
+
+            <p class="text-lg text-slate-200 mt-5 max-w-2xl">
+                Descubre propiedades seleccionadas en las mejores
+                ubicaciones de España.
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+             BUSCADOR
+        ====================================================== -->
+
+        <div id="buscar" class="bg-white shadow-2xl">
+
+            <div class="border-b border-slate-200 flex">
+
+                <button class="px-8 py-4 font-semibold text-navy border-b-2 border-emerald-700">
+                    Comprar
+                </button>
+
+                <button class="px-8 py-4 text-slate-500">
+                    Alquilar
+                </button>
+
+                <button class="px-8 py-4 text-slate-500">
+                    Obra nueva
+                </button>
+
+            </div>
+
+
+            <div class="p-5">
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-3">
+
+                    <div class="lg:col-span-2">
+
+                        <label class="block text-[11px] uppercase tracking-wide text-slate-500 mb-1">
+                            Ubicación
+                        </label>
+
+                        <input
+                            id="locationInput"
+                            type="text"
+                            placeholder="Ciudad, zona o código postal"
+                            class="search-field w-full border border-slate-300 px-4 py-3 text-sm">
+
+                    </div>
+
+
+                    <div>
+
+                        <label class="block text-[11px] uppercase tracking-wide text-slate-500 mb-1">
+                            Inmueble
+                        </label>
+
+                        <select id="typeInput"
+                                class="search-field w-full border border-slate-300 px-3 py-3 text-sm bg-white">
+
+                            <option value="">Todos</option>
+                            <option>Piso</option>
+                            <option>Casa</option>
+                            <option>Ático</option>
+                            <option>Chalet</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div>
+
+                        <label class="block text-[11px] uppercase tracking-wide text-slate-500 mb-1">
+                            Precio mínimo
+                        </label>
+
+                        <select class="w-full border border-slate-300 px-3 py-3 text-sm bg-white">
+                            <option>Sin mínimo</option>
+                            <option>100.000 €</option>
+                            <option>200.000 €</option>
+                            <option>300.000 €</option>
+                            <option>500.000 €</option>
+                        </select>
+
+                    </div>
+
+
+                    <div>
+
+                        <label class="block text-[11px] uppercase tracking-wide text-slate-500 mb-1">
+                            Precio máximo
+                        </label>
+
+                        <select class="w-full border border-slate-300 px-3 py-3 text-sm bg-white">
+                            <option>Sin máximo</option>
+                            <option>300.000 €</option>
+                            <option>500.000 €</option>
+                            <option>750.000 €</option>
+                            <option>1.000.000 €+</option>
+                        </select>
+
+                    </div>
+
+
+                    <div>
+
+                        <label class="block text-[11px] uppercase tracking-wide text-slate-500 mb-1">
+                            Habitaciones
+                        </label>
+
+                        <select class="w-full border border-slate-300 px-3 py-3 text-sm bg-white">
+
+                            <option>Cualquiera</option>
+                            <option>1+</option>
+                            <option>2+</option>
+                            <option>3+</option>
+                            <option>4+</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="mt-4 flex justify-between items-center">
+
+                    <a href="#propiedades"
+                       class="text-sm text-slate-500 underline">
+                        Búsqueda avanzada y mapa interactivo
+                    </a>
+
+                    <button onclick="buscarPropiedades()"
+                            class="bg-emerald-700 hover:bg-emerald-800 text-white px-10 py-3.5 font-semibold">
+                        ⌕ &nbsp; Buscar propiedades
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     BÚSQUEDAS POPULARES
+========================================================= -->
+
+<section class="border-b border-slate-200">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="grid grid-cols-2 md:grid-cols-5 divide-x divide-slate-200">
+
+            <a href="#propiedades" class="p-6 hover:bg-slate-50">
+                <small class="text-slate-400">DESTACADO</small>
+                <div class="font-semibold text-sm mt-1">
+                    Pisos en Madrid
+                </div>
+            </a>
+
+            <a href="#propiedades" class="p-6 hover:bg-slate-50">
+                <small class="text-slate-400">CASAS</small>
+                <div class="font-semibold text-sm mt-1">
+                    Casas con piscina
+                </div>
+            </a>
+
+            <a href="#propiedades" class="p-6 hover:bg-slate-50">
+                <small class="text-slate-400">PREMIUM</small>
+                <div class="font-semibold text-sm mt-1">
+                    Áticos de lujo
+                </div>
+            </a>
+
+            <a href="#propiedades" class="p-6 hover:bg-slate-50">
+                <small class="text-slate-400">EMPRESAS</small>
+                <div class="font-semibold text-sm mt-1">
+                    Oficinas y locales
+                </div>
+            </a>
+
+            <a href="#propiedades" class="p-6 hover:bg-slate-50">
+                <small class="text-slate-400">OPORTUNIDADES</small>
+                <div class="font-semibold text-sm mt-1">
+                    Embargos bancarios
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PROPIEDADES
+========================================================= -->
+
+<section id="propiedades" class="py-20 bg-slate-50">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="flex justify-between items-end mb-10">
+
+            <div>
+
+                <div class="gold-line mb-5"></div>
+
+                <h2 class="font-serif text-4xl">
+                    Propiedades destacadas
+                </h2>
+
+                <p class="text-slate-500 mt-2">
+                    Una selección de inmuebles excepcionales.
+                </p>
+
+            </div>
+
+            <div class="hidden md:flex gap-6 text-sm">
+
+                <button onclick="mostrarTodas()"
+                        class="font-semibold border-b-2 border-emerald-700 pb-2">
+                    Todas
+                </button>
+
+                <button onclick="filtrar('Madrid')" class="text-slate-500">
+                    Madrid
+                </button>
+
+                <button onclick="filtrar('Barcelona')" class="text-slate-500">
+                    Barcelona
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- CONTENEDOR PROPIEDADES -->
+
+        <div id="propertyGrid"
+             class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+
+            <!-- PROPIEDAD 1 -->
+
+            <article class="property-card bg-white border border-slate-200"
+                     data-city="Madrid">
+
+                <div class="relative h-56 overflow-hidden">
+
+                    <!-- CAMBIA ESTA FOTO -->
+                    <img
+                        src="images/piso1.jpg"
+                        alt="Piso de lujo en Salamanca"
+                        class="w-full h-full object-cover">
+
+                    <span class="absolute top-4 left-4 bg-emerald-700 text-white text-[10px] uppercase px-3 py-1.5">
+                        Exclusivo
+                    </span>
+
+                    <button onclick="favorito(this)"
+                            class="absolute top-4 right-4 bg-white w-9 h-9">
+                        ♡
+                    </button>
+
+                </div>
+
+                <div class="p-5">
+
+                    <div class="text-2xl font-semibold">
+                        485.000 €
+                    </div>
+
+                    <h3 class="font-semibold mt-2">
+                        Elegante piso reformado
+                    </h3>
+
+                    <p class="text-sm text-slate-500 mt-1">
+                        Salamanca · Madrid
+                    </p>
+
+                    <div class="border-t border-slate-200 mt-5 pt-4 flex gap-5 text-xs text-slate-500">
+                        <span>125 m²</span>
+                        <span>3 hab.</span>
+                        <span>2 baños</span>
+                    </div>
+
+                    <a href="ficha.html?id=piso-salamanca"
+                       class="block text-center border border-navy text-navy mt-5 py-2.5 text-sm font-semibold hover:bg-navy hover:text-white transition">
+                        Ver ficha
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- PROPIEDAD 2 -->
+
+            <article class="property-card bg-white border border-slate-200"
+                     data-city="Madrid">
+
+                <div class="relative h-56 overflow-hidden">
+
+                    <!-- CAMBIA ESTA FOTO -->
+                    <img
+                        src="images/villa1.jpg"
+                        alt="Villa contemporánea"
+                        class="w-full h-full object-cover">
+
+                    <span class="absolute top-4 left-4 bg-navy text-white text-[10px] uppercase px-3 py-1.5">
+                        En venta
+                    </span>
+
+                    <button onclick="favorito(this)"
+                            class="absolute top-4 right-4 bg-white w-9 h-9">
+                        ♡
+                    </button>
+
+                </div>
+
+                <div class="p-5">
+
+                    <div class="text-2xl font-semibold">
+                        795.000 €
+                    </div>
+
+                    <h3 class="font-semibold mt-2">
+                        Villa contemporánea
+                    </h3>
+
+                    <p class="text-sm text-slate-500 mt-1">
+                        Pozuelo de Alarcón · Madrid
+                    </p>
+
+                    <div class="border-t border-slate-200 mt-5 pt-4 flex gap-5 text-xs text-slate-500">
+                        <span>285 m²</span>
+                        <span>4 hab.</span>
+                        <span>3 baños</span>
+                    </div>
+
+                    <a href="ficha.html?id=villa-pozuelo"
+                       class="block text-center border border-navy text-navy mt-5 py-2.5 text-sm font-semibold hover:bg-navy hover:text-white transition">
+                        Ver ficha
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- PROPIEDAD 3 -->
+
+            <article class="property-card bg-white border border-slate-200"
+                     data-city="Madrid">
+
+                <div class="relative h-56 overflow-hidden">
+
+                    <!-- CAMBIA ESTA FOTO -->
+                    <img
+                        src="images/atico1.jpg"
+                        alt="Ático de lujo"
+                        class="w-full h-full object-cover">
+
+                    <span class="absolute top-4 left-4 bg-emerald-700 text-white text-[10px] uppercase px-3 py-1.5">
+                        Premium
+                    </span>
+
+                    <button onclick="favorito(this)"
+                            class="absolute top-4 right-4 bg-white w-9 h-9">
+                        ♡
+                    </button>
+
+                </div>
+
+                <div class="p-5">
+
+                    <div class="text-2xl font-semibold">
+                        1.250.000 €
+                    </div>
+
+                    <h3 class="font-semibold mt-2">
+                        Ático con terraza privada
+                    </h3>
+
+                    <p class="text-sm text-slate-500 mt-1">
+                        Chamberí · Madrid
+                    </p>
+
+                    <div class="border-t border-slate-200 mt-5 pt-4 flex gap-5 text-xs text-slate-500">
+                        <span>178 m²</span>
+                        <span>3 hab.</span>
+                        <span>2 baños</span>
+                    </div>
+
+                    <a href="ficha.html?id=atico-chamberi"
+                       class="block text-center border border-navy text-navy mt-5 py-2.5 text-sm font-semibold hover:bg-navy hover:text-white transition">
+                        Ver ficha
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- PROPIEDAD 4 -->
+
+            <article class="property-card bg-white border border-slate-200"
+                     data-city="Madrid">
+
+                <div class="relative h-56 overflow-hidden">
+
+                    <!-- CAMBIA ESTA FOTO -->
+                    <img
+                        src="images/chalet1.jpg"
+                        alt="Chalet de lujo"
+                        class="w-full h-full object-cover">
+
+                    <span class="absolute top-4 left-4 bg-navy text-white text-[10px] uppercase px-3 py-1.5">
+                        Nueva
+                    </span>
+
+                    <button onclick="favorito(this)"
+                            class="absolute top-4 right-4 bg-white w-9 h-9">
+                        ♡
+                    </button>
+
+                </div>
+
+                <div class="p-5">
+
+                    <div class="text-2xl font-semibold">
+                        1.490.000 €
+                    </div>
+
+                    <h3 class="font-semibold mt-2">
+                        Chalet independiente
+                    </h3>
+
+                    <p class="text-sm text-slate-500 mt-1">
+                        La Moraleja · Madrid
+                    </p>
+
+                    <div class="border-t border-slate-200 mt-5 pt-4 flex gap-5 text-xs text-slate-500">
+                        <span>420 m²</span>
+                        <span>5 hab.</span>
+                        <span>4 baños</span>
+                    </div>
+
+                    <a href="ficha.html?id=chalet-moraleja"
+                       class="block text-center border border-navy text-navy mt-5 py-2.5 text-sm font-semibold hover:bg-navy hover:text-white transition">
+                        Ver ficha
+                    </a>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ESTADÍSTICAS
+========================================================= -->
+
+<section class="bg-navy text-white">
+
+    <div class="max-w-7xl mx-auto px-6 py-16">
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 divide-x divide-slate-700">
+
+            <div class="text-center px-8">
+                <div class="font-serif text-4xl">+10.000</div>
+                <div class="text-sm text-slate-300 mt-2">
+                    Inmuebles disponibles
+                </div>
+            </div>
+
+            <div class="text-center px-8">
+                <div class="font-serif text-4xl">98%</div>
+                <div class="text-sm text-slate-300 mt-2">
+                    Clientes satisfechos
+                </div>
+            </div>
+
+            <div class="text-center px-8">
+                <div class="font-serif text-4xl">24h</div>
+                <div class="text-sm text-slate-300 mt-2">
+                    Valoración inmobiliaria
+                </div>
+            </div>
+
+            <div class="text-center px-8">
+                <div class="font-serif text-4xl">15+</div>
+                <div class="text-sm text-slate-300 mt-2">
+                    Años de experiencia
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SERVICIOS
+========================================================= -->
+
+<section id="servicios" class="py-20">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="grid lg:grid-cols-3 gap-12">
+
+            <div>
+
+                <div class="gold-line mb-5"></div>
+
+                <h2 class="font-serif text-4xl">
+                    Mucho más que un portal inmobiliario
+                </h2>
+
+            </div>
+
+            <div class="border-l border-slate-200 pl-8">
+
+                <span class="text-emerald-700 text-2xl">
+                    01
+                </span>
+
+                <h3 class="font-semibold text-lg mt-4">
+                    Valoración profesional
+                </h3>
+
+                <p class="text-sm text-slate-500 leading-7 mt-3">
+                    Analizamos el mercado y las características de su
+                    propiedad para establecer un precio competitivo.
+                </p>
+
+            </div>
+
+            <div class="border-l border-slate-200 pl-8">
+
+                <span class="text-emerald-700 text-2xl">
+                    02
+                </span>
+
+                <h3 class="font-semibold text-lg mt-4">
+                    Asesoramiento integral
+                </h3>
+
+                <p class="text-sm text-slate-500 leading-7 mt-3">
+                    Le acompañamos durante todo el proceso de compra,
+                    venta, financiación y gestión documental.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     VENDER
+========================================================= -->
+
+<section id="vender" class="py-20">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="bg-navy px-10 lg:px-16 py-14 flex flex-col lg:flex-row justify-between items-center gap-8">
+
+            <div class="text-white">
+
+                <div class="text-xs uppercase tracking-[.2em] text-amber-400">
+                    ¿Quiere vender?
+                </div>
+
+                <h2 class="font-serif text-4xl mt-4">
+                    Descubra cuánto vale su propiedad.
+                </h2>
+
+                <p class="text-slate-300 mt-3">
+                    Solicite una valoración profesional sin compromiso.
+                </p>
+
+            </div>
+
+            <a href="#"
+               class="bg-white text-navy px-8 py-4 font-semibold">
+                Solicitar valoración
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer id="agencias" class="bg-[#080F1F] text-slate-300">
+
+    <div class="max-w-7xl mx-auto px-6 py-16">
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-12">
+
+            <div>
+
+                <div class="text-white text-xl font-semibold">
+                    INMOBILIA
+                </div>
+
+                <div class="text-[9px] tracking-[.25em] text-slate-500">
+                    REAL ESTATE GROUP
+                </div>
+
+                <p class="text-sm text-slate-400 leading-6 mt-5">
+                    Portal inmobiliario profesional especializado en
+                    compraventa y alquiler de propiedades.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3 class="text-white font-semibold mb-5">
+                    Ciudades
+                </h3>
+
+                <ul class="space-y-3 text-sm">
+                    <li>Madrid</li>
+                    <li>Barcelona</li>
+                    <li>Valencia</li>
+                    <li>Sevilla</li>
+                    <li>Málaga</li>
+                    <li>Marbella</li>
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h3 class="text-white font-semibold mb-5">
+                    Propiedades
+                </h3>
+
+                <ul class="space-y-3 text-sm">
+                    <li>Pisos</li>
+                    <li>Casas</li>
+                    <li>Chalets</li>
+                    <li>Áticos</li>
+                    <li>Locales</li>
+                    <li>Oficinas</li>
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h3 class="text-white font-semibold mb-5">
+                    Empresa y legal
+                </h3>
+
+                <ul class="space-y-3 text-sm">
+                    <li>Aviso legal</li>
+                    <li>Privacidad</li>
+                    <li>Cookies</li>
+                    <li>Contacto</li>
+                    <li>Trabaja con nosotros</li>
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h3 class="text-white font-semibold mb-5">
+                    Newsletter
+                </h3>
+
+                <p class="text-sm text-slate-400 leading-6 mb-5">
+                    Reciba nuevas oportunidades inmobiliarias.
+                </p>
+
+                <form onsubmit="suscribir(event)" class="flex">
+
+                    <input
+                        id="newsletter"
+                        type="email"
+                        required
+                        placeholder="Su email"
+                        class="w-full px-4 py-3 text-sm text-navy outline-none">
+
+                    <button
+                        class="bg-emerald-700 text-white px-5">
+                        →
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+        <div class="border-t border-slate-800 mt-14 pt-7 text-xs text-slate-500">
+            © 2026 INMOBILIA Real Estate Group. Todos los derechos reservados.
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   FAVORITOS
+========================================================= */
+
+function favorito(button) {
+
+    if(button.textContent.trim() === '♡') {
+        button.textContent = '♥';
+        button.style.color = '#B08D57';
+    } else {
+        button.textContent = '♡';
+        button.style.color = '';
+    }
+
+}
+
+
+/* =========================================================
+   FILTRO POR CIUDAD
+========================================================= */
+
+function filtrar(city) {
+
+    const properties =
+        document.querySelectorAll('.property-card');
+
+    properties.forEach(property => {
+
+        if(property.dataset.city === city) {
+            property.style.display = '';
+        } else {
+            property.style.display = 'none';
+        }
+
+    });
+
+}
+
+
+function mostrarTodas() {
+
+    document.querySelectorAll('.property-card')
+        .forEach(property => {
+            property.style.display = '';
+        });
+
+}
+
+
+/* =========================================================
+   BUSCADOR
+========================================================= */
+
+function buscarPropiedades() {
+
+    const location =
+        document.getElementById('locationInput')
+        .value
+        .toLowerCase();
+
+    const type =
+        document.getElementById('typeInput').value
+        .toLowerCase();
+
+    const properties =
+        document.querySelectorAll('.property-card');
+
+    properties.forEach(property => {
+
+        const text =
+            property.innerText.toLowerCase();
+
+        const locationMatch =
+            !location || text.includes(location);
+
+        const typeMatch =
+            !type || text.includes(type);
+
+        property.style.display =
+            locationMatch && typeMatch
+                ? ''
+                : 'none';
+
+    });
+
+    document.getElementById('propiedades')
+        .scrollIntoView({
+            behavior:'smooth'
+        });
+
+}
+
+
+/* =========================================================
+   NEWSLETTER
+========================================================= */
+
+function suscribir(event) {
+
+    event.preventDefault();
+
+    const email =
+        document.getElementById('newsletter').value;
+
+    alert(
+        'Gracias. Hemos registrado la dirección ' +
+        email
+    );
+
+}
+
+</script>
+
+</body>
+</html>
+
